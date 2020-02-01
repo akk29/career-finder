@@ -21,5 +21,7 @@ from registeration import views as reg_views
 urlpatterns = [
     path(r'', reg_views.index),
     path('auth/', include('registeration.urls')),
+    path('',include('asset.urls')),
     path('admin/', admin.site.urls),
+
 ]

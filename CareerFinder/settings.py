@@ -73,6 +73,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'CareerFinder.wsgi.application'
 
+LOGIN_URL = '/auth/login'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
