@@ -2,6 +2,18 @@
 
 <style>
 
+table {
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+
+td, th {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 18px;
+}
+
 li {
   float: left;
 }
@@ -33,19 +45,46 @@ li a:hover {
 }
 {% load custom_tags %}
 </style>
-
 <ul class="horizontal grey">
   <li>
    <a href="#">{% getuserprofile request.user.id %} : {{request.user}}</a>
   </li>
   <li>
-    <a href="/addjob"> Create a Job</a>
+    <a href="/addjob"> Post a Job</a>
+  </li>
+  <li>
+    <a href="/allpostedjobs">All posted jobs</a>
   </li>
   <li style="float:right">
     <a href="/auth/logout">Logout</a>
   </li>
 </ul>
+<br>
 <div class="jumbotron">
-
+  <table>
+    <tr>
+      <th>Sr. No</th>
+      <th>Job Title</th>
+      <th>Location</th>
+      <th>Candidate</th>
+    </tr>
+    {% for applicant in all_applicants %}
+    <tr>
+      <td>
+        {{forloop.counter}}
+      </td>
+      <td>
+        {{applicant.Job.title}}
+      </td>
+      <td>
+        {{applicant.Job.location}}
+      </td>
+      <td>
+        {{applicant.Applicant}}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+<br>
 </div>
 {% endblock %}

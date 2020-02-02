@@ -3,10 +3,92 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 18px;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      /* color: white; */
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #f3f3f3;
+    }
+
+    .horizontal{
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f3f3f3;
+      border: 1px solid #e7e7e7;
+      font-family : Georgia;
+    }
+    .grey{
+      border: 1px solid #e7e7e7;
+      background-color: #f3f3f3;
+    }
+    </style>
   </head>
   <body>
-    {% for job in all_jobs%}
-    {{job.title}} , {{job.location}}
-    {% endfor%}
+    {% load custom_tags %}
+    <ul class="horizontal grey">
+      <li>
+       <a href="#">{% getuserprofile request.user.id %} : {{request.user}}</a>
+      </li>
+      <li>
+        <a href="/addjob"> Post a Job</a>
+      </li>
+      <li>
+        <a href="/showallapplicants">Applied Applicants</a>
+      </li>
+      <li style="float:right">
+        <a href="/auth/logout">Logout</a>
+      </li>
+    </ul>
+    <br>
+    <div class="jumbotron">
+      <table>
+        <tr>
+          <th>Sr. No</th>
+          <th>Job Title</th>
+          <th>Description</th>
+          <th>Location</th>
+        </tr>
+        {% for job in all_jobs %}
+        <tr>
+          <td>
+            {{forloop.counter}}
+          </td>
+          <td>
+            {{job.title}}
+          </td>
+          <td>
+            {{job.description}}
+          </td>
+          <td>
+            {{job.location}}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
   </body>
 </html>

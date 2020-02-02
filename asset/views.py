@@ -75,8 +75,9 @@ class PostAJob(LoginRequiredMixin,CreateView):
 def showAllApplicants(request):
     all_posted_jobs = Job.objects.all().filter(createdBy = request.user.id)
     print(all_posted_jobs)
+    all_applicants = []
     for job in all_posted_jobs:
-        # print(job.id)
         allJobApplication = JobsApplication.objects.filter(postedby = request.user.id).filter(Job = job.id)
-        print(allJobApplication)
-    return render(request,"showapplicants.html")
+        if(len(allJobApplication) > 0):
+            all_applicants.extend(allJobApplication)
+    return render(request,"showapplicants.html",{'all_applicants': all_applicants})
