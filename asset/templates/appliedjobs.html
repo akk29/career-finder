@@ -1,0 +1,112 @@
+{% block content %}
+
+<style>
+
+table {
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+
+td, th {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 18px;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {
+  background-color: #0000FF;
+}
+
+.button3 {
+  background-color: #f44336;
+}
+
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  /* color: white; */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #f3f3f3;
+}
+
+.horizontal{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f3f3f3;
+  border: 1px solid #e7e7e7;
+  font-family : Georgia;
+}
+.grey{
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+{% load custom_tags %}
+</style>
+
+<ul class="horizontal grey">
+  <li>
+   <a href="#">{% getuserprofile request.user.id %} : {{request.user}}</a>
+  </li>
+  <li>
+    <a href="/alljobs"> Apply for job</a>
+  </li>
+  <li style="float:right">
+    <a href="/auth/logout">Logout</a>
+  </li>
+</ul>
+<br>
+<div class="jumbotron">
+  <table>
+    <tr>
+      <th>Sr No.</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Status</th>
+    </tr>
+      {% for job in all_jobs %}
+    <tr>
+      <td>
+        {{forloop.counter}}
+      </td>
+      <td>
+        {{ job.Job.title }}
+      </td>
+      <td>
+        {{ job.Job.description }}
+      </td>
+      <td>
+        {{ job.Job.location }}
+      </td>
+      <td>
+        <button type="button" class="button button2"  name="button">Applied</button>
+        </form>
+      </td>
+      </tr>
+    {% endfor%}
+  </table>
+</div>
+{% endblock %}

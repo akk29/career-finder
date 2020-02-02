@@ -2,3 +2,4 @@ django
 psycopg2
 django-heroku
 gunicorn
+django-bootstrap4

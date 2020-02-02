@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'registeration',
-    'asset'
+    'asset',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'CareerFinder.wsgi.application'
 
 LOGIN_URL = '/auth/login'
+
+LOGIN_REDIRECT_URL = '/auth/handleUserRedirectionAfterLogin'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

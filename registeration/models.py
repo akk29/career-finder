@@ -8,8 +8,11 @@ from django.dispatch import receiver
 class Profile(models.Model):
     CATEGORY_CHOICES = (('Recruiter','Recruiter'),('Job Applicant','Job Applicant'))
     category = models.CharField(max_length = 15 , choices = CATEGORY_CHOICES)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key = True)
     First_name = models.CharField(max_length = 15 , blank = False)
+
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):

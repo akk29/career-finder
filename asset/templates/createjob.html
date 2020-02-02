@@ -1,0 +1,66 @@
+{% block content %}
+
+<style>
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  /* color: white; */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #f3f3f3;
+}
+
+.horizontal{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f3f3f3;
+  border: 1px solid #e7e7e7;
+  font-family : Georgia;
+}
+.grey{
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+{% load custom_tags %}
+</style>
+
+<ul class="horizontal grey">
+  <li>
+   <a href="#">{% getuserprofile request.user.id %} : {{request.user}}</a>
+  </li>
+  <li>
+    <a href="/allpostedjobs"> Show All my posted jobs</a>
+  </li>
+  <li>
+    <a href="/showallapplicants"> Show Job Applicants</a>
+  </li>
+  <li style="float:right">
+    <a href="/auth/logout">Logout</a>
+  </li>
+</ul>
+<div class="jumbotron">
+  <form method="post" class="form-horizontal">{% csrf_token %}
+    {# Load the tag library #}
+      {% load bootstrap4 %}
+
+      {# Load CSS and JavaScript #}
+      {% bootstrap_css %}
+      {% bootstrap_javascript jquery='full' %}
+
+      {# Display django.contrib.messages as Bootstrap alerts #}
+      {% bootstrap_messages %}
+    {% bootstrap_form form %}
+    <input type="submit" value="Create Job" class="btn btn-primary">
+  </form>
+</div>
+{% endblock %}

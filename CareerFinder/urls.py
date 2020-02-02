@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path , include
 from registeration import views as reg_views
 
-
 urlpatterns = [
     path(r'', reg_views.index),
     path('auth/', include('registeration.urls')),

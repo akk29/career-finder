@@ -1,6 +1,5 @@
-{% extends 'base.html' %}
-
 {% block content %}
+
 <style>
 
 li {
@@ -25,27 +24,28 @@ li a:hover {
   padding: 0;
   overflow: hidden;
   background-color: #f3f3f3;
-  border: 1px solid #e7e7e7
+  border: 1px solid #e7e7e7;
+  font-family : Georgia;
 }
 .grey{
-border: 1px solid #e7e7e7;
+  border: 1px solid #e7e7e7;
   background-color: #f3f3f3;
 }
-
+{% load custom_tags %}
 </style>
 
 <ul class="horizontal grey">
   <li>
-   <a href="#">hello {{request.user}}</a>
+   <a href="#">{% getuserprofile request.user.id %} : {{request.user}}</a>
   </li>
   <li>
-    <a href="/addjob">Add a New Job</a>
+    <a href="/addjob"> Create a Job</a>
   </li>
-  <li>
-    <a href="/allpostedjobs"> Show All my posted jobs</a>
-  </li>
-  <li>
+  <li style="float:right">
     <a href="/auth/logout">Logout</a>
   </li>
 </ul>
+<div class="jumbotron">
+
+</div>
 {% endblock %}
