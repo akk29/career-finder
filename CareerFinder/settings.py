@@ -27,7 +27,7 @@ SECRET_KEY = '%@%54+p@v^$i4rq8(_yo4e)hu$r#c^=fq(v2u5pqegg808$9ey'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['careerfinder.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
