@@ -78,6 +78,7 @@ li a:hover {
   </li>
 </ul>
 <br>
+{% if all_jobs%}
 <div class="jumbotron">
   <table>
     <tr>
@@ -109,4 +110,7 @@ li a:hover {
     {% endfor%}
   </table>
 </div>
+{% else %}
+<h2>No active applications</h2>
+{% endif %}
 {% endblock %}

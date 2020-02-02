@@ -36,7 +36,6 @@ class AllJobsApplied(LoginRequiredMixin,ListView):
 
     def get_queryset(self):
         data = JobsApplication.objects.all().filter(Applicant = self.request.user.id)
-        print(data)
         return data
 
 

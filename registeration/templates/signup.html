@@ -9,15 +9,15 @@
           {# Display django.contrib.messages as Bootstrap alerts #}
           {% bootstrap_messages %}
         <div class="jumbotron center">
-          <h2 class="text-center">Signup</h2>
+          <h2 class="text-center">Sign up</h2>
           <br>
           <form action="" method="post" class="form-horizontal">
             {% bootstrap_form_errors form %}
             {% bootstrap_form form layout='inline' %}
             {% csrf_token %}
-            <input type="submit" value="Signup" class="btn btn-primary">
+            <input type="submit" value="Sign up" class="btn btn-primary">
           </form>
           <br>
-      <span class="text-justify"> <a href="/auth/login">Login</a> </span>
+      <span class="text-justify"> <a href="/auth/login">Log in</a> </span>
         </div>
 {% endblock %}
