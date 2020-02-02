@@ -2,7 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>
+       {% block title %}{% endblock %}
+    </title>
     <style>
     .center{
       margin: 70px 100px;
@@ -20,8 +22,6 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
-
-
     </style>
   </head>
   <body>

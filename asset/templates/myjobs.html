@@ -12,7 +12,7 @@
     }
 
     td, th {
-    border: 1px solid #dddddd;
+    border: 3px solid #e7e7e7;
     text-align: left;
     padding: 18px;
     }
@@ -65,8 +65,9 @@
       </li>
     </ul>
     <br>
+    {% if all_jobs %}
     <div class="jumbotron">
-      <table>
+      <table border="1">
         <tr>
           <th>Sr. No</th>
           <th>Job Title</th>
@@ -90,5 +91,9 @@
         </tr>
         {% endfor %}
       </table>
+      <div/>
+      {% else %}
+      <h2> No Jobs Posted </h2>
+      {% endif %}
   </body>
 </html>

@@ -9,7 +9,7 @@ width: 100%;
 }
 
 td, th {
-border: 1px solid #dddddd;
+border: 3px solid #e7e7e7;
 text-align: left;
 padding: 18px;
 }
@@ -50,7 +50,7 @@ li a:hover {
    <a href="#">{% getuserprofile request.user.id %} : {{request.user}}</a>
   </li>
   <li>
-    <a href="/addjob"> Post a Job</a>
+    <a href="/addjob"> Post Job</a>
   </li>
   <li>
     <a href="/allpostedjobs">All posted jobs</a>
@@ -61,6 +61,7 @@ li a:hover {
 </ul>
 <br>
 <div class="jumbotron">
+  {% if all_applicants %}
   <table>
     <tr>
       <th>Sr. No</th>
@@ -85,6 +86,9 @@ li a:hover {
     </tr>
     {% endfor %}
   </table>
+  {% else %}
+  <h2>No Applicant Applied</h2>
+  {% endif %}
 <br>
 </div>
 {% endblock %}

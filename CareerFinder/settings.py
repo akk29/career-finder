@@ -25,7 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%@%54+p@v^$i4rq8(_yo4e)hu$r#c^=fq(v2u5pqegg808$9ey'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
+if(os.getenv('Heroku') == 'True'):
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

@@ -11,7 +11,7 @@
       }
 
       td, th {
-      border: 1px solid #dddddd;
+      border: 3px solid #dddddd;
       text-align: left;
       padding: 18px;
       }
@@ -88,7 +88,6 @@
         <th>Location</th>
         <th>Status</th>
       </tr>
-
       {% for job in all_jobs%}
       <tr>
         <td>
@@ -104,17 +103,18 @@
           {{job.location}}
         </td>
         <td>
-          <form action="/applyforjob/{{job.id}}/" method="POST">
-            {% csrf_token %}
             {% any_function job.id request.user.id as result %}
             {% if result == 'Apply' %}
-              <button type="submit" class="button" name="button">Apply for Job</button>
+            <form action="/applyforjob/{{job.id}}/" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="button" name="button">Apply</button>
+            </form>
             {% elif result == 'Applied' %}
-              <button type="button" class="button button2" name="button">Applied</button>
-            {% elif result == 'My own'%}
-            <button type="button" class="button button3" name="button">Can't apply</button>
+            <form action="/withdrawapplication/{{job.id}}/{{request.user.id}}/" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="button button2" name="button">Withdraw Application</button>
+            </form>
             {% endif %}
-          </form>
         </td>
         </tr>
       {% endfor%}

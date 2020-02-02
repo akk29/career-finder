@@ -8,7 +8,7 @@ from asset.models import Profile
 from django.db.models import Q
 
 
-@login_required
+@login_required()
 def candidate(request):
     return redirect('/alljobs')
 
@@ -81,3 +81,9 @@ def showAllApplicants(request):
         if(len(allJobApplication) > 0):
             all_applicants.extend(allJobApplication)
     return render(request,"showapplicants.html",{'all_applicants': all_applicants})
+
+@login_required
+def withDrawApplication(request,job_id,userid):
+    print(job_id,userid)
+    JobsApplication.objects.filter(Applicant = userid).filter(Job = job_id).delete()
+    return redirect('/alljobs')
