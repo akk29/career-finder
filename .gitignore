@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.sqllite3
 
 # C extensions
 *.so
@@ -111,7 +112,7 @@ env.bak/
 venv.bak/
 
 # Spyder project settings
-.spyderproject 
+.spyderproject
 .spyproject
 
 # Rope project settings
