@@ -55,7 +55,7 @@ class AllJobsView(LoginRequiredMixin,ListView):
 
     def get_queryset(self):
         data = Job.objects.filter(~Q(createdBy = self.request.user.id))
-        print(data,self.request.user)
+        #print(data,self.request.user)
         return data
 
 class PostAJob(LoginRequiredMixin,CreateView):
@@ -73,7 +73,7 @@ class PostAJob(LoginRequiredMixin,CreateView):
 @login_required
 def showAllApplicants(request):
     all_posted_jobs = Job.objects.all().filter(createdBy = request.user.id)
-    print(all_posted_jobs)
+    #print(all_posted_jobs)
     all_applicants = []
     for job in all_posted_jobs:
         allJobApplication = JobsApplication.objects.filter(postedby = request.user.id).filter(Job = job.id)
@@ -83,6 +83,6 @@ def showAllApplicants(request):
 
 @login_required
 def withDrawApplication(request,job_id,userid):
-    print(job_id,userid)
+    #print(job_id,userid)
     JobsApplication.objects.filter(Applicant = userid).filter(Job = job_id).delete()
     return redirect('/alljobs')
