@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn CareerFinder.wsgi
+web: gunicorn CareerFinder.wsgi --log-file -
