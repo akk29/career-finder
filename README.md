@@ -1,22 +1,20 @@
 # Career Finder
 
-### Steps to Runing Project Locally 
-
-1. clone 
-2. virtualenv
-3. creatign and running migrations
-4. run server
-
+### Steps for runing project locally 
 
 ```
 
 git clone https://github.com/babygame0ver/Career-Finder
 
 cd Career-Finder
-pip install virtualenv
+
+pip install virtualenv # optional
 virtualenv venv
 
 pip install -r requirements.txt
+
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver
 
 ```
