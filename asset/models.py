@@ -7,6 +7,7 @@ from django import template
 register = template.Library()
 
 class Job(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length = 150 , blank = False)
     description = models.CharField(max_length = 150 , blank = False)
     location = models.CharField(max_length = 150 , blank = False)
@@ -26,6 +27,7 @@ class Job(models.Model):
         return True
 
 class JobsApplication(models.Model):
+    id = models.AutoField(primary_key=True)
     Job = models.ForeignKey(Job,on_delete = models.CASCADE ,null = False,blank=False)
     Applicant = models.ForeignKey(User,on_delete = models.CASCADE,null = False,blank=False )
     postedby = models.ForeignKey(User,on_delete = models.CASCADE,related_name = "recruiter",null = False,blank=False )
