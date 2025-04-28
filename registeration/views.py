@@ -1,26 +1,21 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
-from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from registeration.forms import SignUpForm, LoginForm
 from enum import Enum
-from .forms import SignUpForm, LoginForm
-
 
 appname = "registeration"
-
 class ROLES(Enum):
     RECRUITER = "Recruiter"
     JOB_APPLICANT = "Job Applicant"
 
-
 @login_required
 def index(request):
-    if request.user.profile.category == ROLES.RECRUITER:
+    print(request.user.profile.category,request.user.profile)
+    if request.user.profile.category == ROLES.RECRUITER.value:
         return redirect("/recruiter")
-    elif request.user.profile.category == ROLES.JOB_APPLICANT:
+    elif request.user.profile.category == ROLES.JOB_APPLICANT.value:
         return redirect("/candidate")
-
 
 def loginPage(request):
     if request.user.is_authenticated:
@@ -39,16 +34,15 @@ def loginPage(request):
                     if user.is_active:
                         login(request, user)
                         print(request.user)
-                        if user.profile.category == ROLES.RECRUITER:
+                        if user.profile.category == ROLES.RECRUITER.value:
                             return redirect("/recruiter")
-                        elif user.profile.category == ROLES.JOB_APPLICANT:
+                        elif user.profile.category == ROLES.JOB_APPLICANT.value:
                             return redirect("/candidate")
                 else:
                     msg = "wrong credentials"
                     return render(request, "login.html", {"form": l, "msg": msg})
         else:
             return render(request, "login.html", {"form": l, "msg": msg})
-
 
 def signup(request):
     if request.user.is_authenticated:
@@ -64,22 +58,22 @@ def signup(request):
                 raw_password = form.cleaned_data.get("password1")
                 user = authenticate(username=user.username, password=raw_password)
                 login(request, user)
-                if user.profile.category == ROLES.RECRUITER:
-                    return redirect("/recruiter")
-                elif user.profile.category == ROLES.JOB_APPLICANT:
+                print(user.profile.category)
+                print("redirecting to recruiter",ROLES.RECRUITER, user.profile.category)
+                if user.profile.category == ROLES.RECRUITER.value:
+                    return redirect("/recruiter/")
+                elif user.profile.category == ROLES.JOB_APPLICANT.value:
                     return redirect("/candidate")
         else:
             form = SignUpForm()
         return render(request, "signup.html", {"form": form})
 
-
 def logoutPage(request):
     logout(request)
     return redirect("/auth/login")
 
-
 def handleUserRedirectionAfterLogin(request):
-    if request.user.profile.category == ROLES.RECRUITER:
+    if request.user.profile.category == ROLES.RECRUITER.value:
         return redirect("/recruiter")
-    elif request.user.profile.category == ROLES.JOB_APPLICANT:
+    elif request.user.profile.category == ROLES.JOB_APPLICANT.value:
         return redirect("/candidate")
