@@ -10,9 +10,9 @@ git clone https://github.com/babygame0ver/Career-Finder
 cd Career-Finder
 
 # install, create virtualenv and activate virtualenv (optional)
-pip install virtualenv 
-virtualenv venv
-source venv/bin/activate
+python -m venv .venv
+.venv\Scripts\activate # windows
+.venv/Scripts/activate # linux
 
 # install requirements
 pip install -r requirements.txt
@@ -31,4 +31,4 @@ Pull publicly hosted image from docker repository & run directly on your system
 docker run -d -p 8080:8000 --name careerfinder babygame0ver/docker-repository:careerfinder
 ```
 
-Visit : http://127.0.0.1:8080 in your browser
+Visit : http://127.0.0.1:8000 in your browser
