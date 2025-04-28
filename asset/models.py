@@ -1,8 +1,7 @@
 from __future__ import unicode_literals
-from django.db import models
-from registeration.models import Profile
-from django.contrib.auth.models import User
 from django import template
+from django.contrib.auth.models import User
+from django.db import models
 
 register = template.Library()
 

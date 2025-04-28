@@ -1,11 +1,10 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.views.generic import CreateView , ListView , DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Job , JobsApplication
-from asset.models import Profile
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.shortcuts import render, redirect
+from django.views.generic import CreateView , ListView
+from asset.models import Job , JobsApplication
+from registeration.models import Profile
 
 
 @login_required()

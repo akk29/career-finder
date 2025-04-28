@@ -1,9 +1,8 @@
 from django import template
-register = template.Library()
-from asset.models import JobsApplication , Job
+from asset.models import JobsApplication
 from registeration.models import Profile
-from django.template import Template
 
+register = template.Library()
 
 @register.simple_tag
 def any_function(jobId,UserId):
@@ -11,7 +10,6 @@ def any_function(jobId,UserId):
     if(len(joblist)!=0 ):
             return 'Applied'
     return 'Apply'
-
 
 @register.simple_tag
 def getuserprofile(UserId):
