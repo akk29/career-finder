@@ -20,7 +20,7 @@ pip install -r requirements.txt
 # run development server locally
 python manage.py makemigrations
 python manage.py migrate
-python manage.py runserver 0.0.0.0:8080
+python manage.py runserver
 ```
 
 ### 2. Steps for runing project locally - via Docker image (Easy & preferred - no dependencies installation)
@@ -28,7 +28,7 @@ python manage.py runserver 0.0.0.0:8080
 Pull publicly hosted image from docker repository & run directly on your system
 
 ```
-docker run -d -p 8080:8000 --name careerfinder babygame0ver/docker-repository:careerfinder
+docker run -d -p 8000:8000 --name careerfinder babygame0ver/docker-repository:careerfinder
 ```
 
 Visit : http://127.0.0.1:8000 in your browser
