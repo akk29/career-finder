@@ -21,18 +21,19 @@ cd career-finder
 # install, create virtualenv and activate virtualenv (optional)
 python -m venv .venv
 .venv\Scripts\activate # windows
-.venv/Scripts/activate # linux
+source .venv/bin/activate # linux
 
 # install requirements
 pip install -r requirements.txt
 
 # run development server locally
+python manage.py collectstatic --no-input
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
 
-### 2. Steps for runing project via docker
+### 2. Steps for running project via docker
 
 Pull publicly hosted image from docker repository & run directly on your system
 
