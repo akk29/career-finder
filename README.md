@@ -9,7 +9,7 @@ Find you next career job with career finder
 
 
 
-### 1. Steps for setting project
+### 1. Steps for setting up project
 
 ```shell
 # get source code
