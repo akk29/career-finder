@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: careerfinder-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: careerfinder
+  template:
+    metadata:
+      labels:
+        app: careerfinder
+    spec:
+      containers:
+        - name: careerfinder
+          image: akk29/public:careerfinder # image should be accessibe to kubernetes
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
