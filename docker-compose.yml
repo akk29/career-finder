@@ -14,7 +14,6 @@ services:
         build:
             context: .
             dockerfile: ./infra/docker/backend/Dockerfile
-        # entrypoint: ./docker/backend/server-entrypoint.sh
         volumes:
             - static_volume:/app/static
         expose:
