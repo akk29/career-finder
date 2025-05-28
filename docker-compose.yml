@@ -7,16 +7,16 @@ services:
         expose:
             - 80
         volumes:
-            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-            - static_volume:/usr/src/app/static
+            - ./infra/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - static_volume:/app/static
     server:
         restart: unless-stopped
         build:
             context: .
-            dockerfile: ./docker/backend/Dockerfile
-        entrypoint: ./docker/backend/server-entrypoint.sh
+            dockerfile: ./infra/docker/backend/Dockerfile
+        # entrypoint: ./docker/backend/server-entrypoint.sh
         volumes:
-            - static_volume:/usr/src/app/static
+            - static_volume:/app/static
         expose:
             - 8000     
 volumes:

@@ -1,0 +1,4 @@
+backend/.venv
+.git
+db
+README.md
